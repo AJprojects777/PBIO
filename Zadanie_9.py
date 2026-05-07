@@ -35,9 +35,11 @@ def calculate_stats(dna):
     return wyniki
 
 def insert_name(dna, imie):
-    """Wrzuca imię (małymi literami) w losowy środek sekwencji."""
+    imie_male = imie.lower().replace(" ", "") # usuwamy spacje z imienia
+    if len(dna) == 0:
+        return imie_male
     miejsce = random.randint(0, len(dna))
-    return dna[:miejsce] + imie.lower() + dna[miejsce:]
+    return dna[:miejsce] + imie_male + dna[miejsce:]
 
 def format_fasta(id_seq, opis, sekwencja, szerokosc=80):
     """Robi z tekstu ładny format FASTA z łamaniem linii co 80 znaków."""
